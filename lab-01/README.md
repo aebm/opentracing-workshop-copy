@@ -24,7 +24,7 @@ Create Google Cloud Account
 
 > Visit https://console.cloud.google.com and click on `Create account`
 
-![Create Account](lab-01/images/img01.png)
+![Create Account](/lab-01/images/img01.png)
 
 ### 1.2 Fill in Details
 
@@ -36,13 +36,13 @@ Create Google Cloud Account
 
 > Enter your phone number and personal details (don't worry, Google says they're private & safe). Google will send a validation code to the phone number you provide.
 
-![Enter Phone Number](lab-01/images/img03.png)
-![Verify Phone Number](lab-01/images/img03a.png)
+![Enter Phone Number](/lab-01/images/img03.png)
+![Verify Phone Number](/lab-01/images/img03a.png)
 
 ### 1.4 Agree to Privacy Terms
 
-![Agree To Deliver Firstborn Child](lab-01/images/img04.png)
-![Agree To Deliver Second Child](lab-01/images/img04a.png)
+![Agree To Deliver Firstborn Child](/lab-01/images/img04.png)
+![Agree To Deliver Second Child](/lab-01/images/img04a.png)
 
 Redeem and Activate $300 Credit
 ---
@@ -51,15 +51,15 @@ Redeem and Activate $300 Credit
 
 > Click the activate button for a $300 credit to your account
 
-![Activate Credit](lab-01/images/img05.png)
+![Activate Credit](/lab-01/images/img05.png)
 
 ### 2.2 Agree to Terms / Enter Credit Card details
 
 > Fill in details for the $300 free credit
 
-![Agree to Terms](lab-01/images/img06.png)
-![Fill in Credit Card Details](lab-01/images/img06a.png)
+![Agree to Terms](/lab-01/images/img06.png)
+![Fill in Credit Card Details](/lab-01/images/img06a.png)
 
 > ##### You're ready to get started with [Lab 02](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-02#welcome-to-lab-02-kubernetes-setup) where we'll setup Google Kubernetes Engine (GKE)
 
-![Let's Go](lab-01/images/img07.png)
+![Let's Go](/lab-01/images/img07.png)

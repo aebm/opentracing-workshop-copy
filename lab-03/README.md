@@ -20,15 +20,15 @@ Setup Application Repository
 
 > To get started, you'll need to either sign into Gitlab with your account, or create a new account. We're going to create a new account for those here who may be new to Gitlab. You may need to help train Google's AI - especially if the entire room starts creating accounts. Be sure to use a valid email address because you'll need to confirm it in order to use your account. You may go to the next step if you already have an account.
 
-![Sign Up for Gitlab Account](lab-03/images/img01.png)
+![Sign Up for Gitlab Account](/lab-03/images/img01.png)
 
 ### 1.2 Create New Project
 
-![Create New Project](lab-03/images/img02.png)
+![Create New Project](/lab-03/images/img02.png)
 
 > Click the `Import Project` tab, and click `Repo by URL`. You will be cloning the `spring-petclinic-kubernetes` repository next.
 
-![Import Project](lab-03/images/img03.png)
+![Import Project](/lab-03/images/img03.png)
 
 > Fill out the following values:
 >
@@ -37,7 +37,7 @@ Setup Application Repository
 > * Set the Project to `Public`
 > * Click `Create Project`
 
-![Create Project](lab-03/images/img04.png)
+![Create Project](/lab-03/images/img04.png)
 
 Configure CI/CD
 ---
@@ -46,7 +46,7 @@ Configure CI/CD
 
 > First we must populate the Ingress IP as a build time variable - this will configure our applications to respond to requests from the outside and route accordingly. You will find this IP address in the `gitlab-creds` file you exported and saved earlier. The `Ingress IP:` field is near the bottom of this document. If there is no IP address there, you can find the IP address in the google console by clicking on `Services`. An example can be found below:
 
-![Service Ingress IP](lab-03/images/img05a.png)
+![Service Ingress IP](/lab-03/images/img05a.png)
 
 > In the above example the Ingress IP address is surrounded by a green box. **DO NOT USE THE IP ADDRESS IN THE ABOVE EXAMPLE**
 > 
@@ -55,25 +55,24 @@ Configure CI/CD
 > * Click `Settings`
 > * Click `CI/CD`
 
-![CI/CD Settings](lab-03/images/img05b.png)
+![CI/CD Settings](/lab-03/images/img05b.png)
 
 > * Click `Expand` next to `Environment Variables`
 > * Fill in `INGRESS_IP` and the value you've collected from either `gitlab-creds` or from the Service Ingress IP in the Google Console.
 > * Click `Save variables`
 
-![Input Ingress IP](lab-03/images/img05c.png)
+![Input Ingress IP](/lab-03/images/img05c.png)
 
 ## 2.2 Configure Kubernetes Integration
 
 > In the next step you will be configuring the Kubernetes Integration in Gitlab by providing the other values which are exposed in the `gitlab-creds` document
 > 
 > * Click `Operations` and the `Kubernetes` Sub-menu item on the left nav-bar.
-
-![Kubernetes Ops](lab-03/images/img06a.png)
-
 > * Click `Add Kubernetes Cluster`
 
-![Add Kubernetes](lab-03/images/img06b.png)
+![Kubernetes Ops](/lab-03/images/img06a.png)
+
+![Add Kubernetes](/lab-03/images/img06b.png)
 
 > Fill in the following values, taking data from `gitlab-creds` which was created earlier in Lab 02:
 > 
@@ -82,25 +81,24 @@ Configure CI/CD
 > * API URL: `<Copy URL from gitlab-creds>`
 > * CA Certificate: `<Copy CA CERT from gitlab-creds>`
 > * Token: `<Copy Token from bottom of gitlab-creds>`
-> * Project Namespace: `spc`
+> * Gitlab-Managed cluster: `UNCHECK`
 > * RBAC-enabled cluster: `checked`
+> * Project Namespace: `spc`
 > 
 > Once you've populated these values, click `Add Kubernetes Cluster`, you'll validate these entries in the next step during > our first build.
 
-![For real - Add Kubernetes](lab-03/images/img06c.png)
+![For real - Add Kubernetes](/lab-03/images/img06c.png)
 
 ### 2.3 Run Pipeline Validation
 
-> Click `CI/CD` in the left-nav menu, then click on `Run Pipeline`
+> * Click `CI/CD` in the left-nav menu, then click on `Run Pipeline`
+> * Once the pipelines has begun executing, click the `Play` button next to `validate-k8s`
+> * To see this job run in real-time, click the `validate-k8s` button
 
-![Run Pipeline](lab-03/images/img07a.png)
+![Run Pipeline](/lab-03/images/img07a.png)
 
-> Once the pipelines has begun executing, click the `Play` button next to `validate-k8s`
+![Run Validate Job](/lab-03/images/img07b.png)
 
-![Run Validate Job](lab-03/images/img07b.png)
+![See Validate Job Run](/lab-03/images/img07c.png)
 
-> To see this job run in real-time, click the `validate-k8s` button
-
-![See Validate Job Run](lab-03/images/img07c.png)
-
-> This job should complete and be successful. If you do not see the `INGRESS_IP` value, and both the server and client versions for `kubectl` **STOP HERE** and raise your hand before moving on to [Lab 4](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-04#welcome-to-lab-04-deploy-all-the-things).
+> This job should complete and be successful. If you do not see the `INGRESS_IP` value, and the tiller pod listed from `kubectl get pods` **STOP HERE** and raise your hand before moving on to [Lab 4](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-04#welcome-to-lab-04-deploy-all-the-things).

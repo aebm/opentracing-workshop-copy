@@ -20,15 +20,16 @@ Deploy App / Infrastructure Services
 
 ### 1.1 Deploy Service Dependencies
 
-> In order for our application to work, we must deploy configuration which will instruct the `nginx-ingress` service to route and service requests at certain endpoints. This script will also deploy the database for our application. You can see the script and resources being deployed here:
+> In order for our application to work, we must deploy configuration which will instruct our ingress proxy [traefik](traefik.com) to route requests at our service endpoints. This script will also deploy the backend services such as Kafka and MySQL for our application. You can see the script and resources being deployed here:
  
 * Deploy Dependency Script: https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes/blob/master/scripts/deploy_backend.sh
-* Ingress Rules: https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes/blob/master/helm/spring-petclinic-ingress-rules/templates/ingress.yaml
-* Database Configuration: https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes/blob/master/helm/spring-petclinic-database-server/values.yaml
+* Ingress Rules: https://gitlab.com/kcdockerio/spring-petclinic-kubernetes/blob/master/helm/spring-petclinic-ingress-rules/templates/traefik-ingress.yaml
+* MySQL Configuration: https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes/blob/master/helm/spring-petclinic-database-server/values.yaml
+* Kafka Configuration: https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes/blob/master/helm/spring-petclinic-kafka-server/values.yaml
 
 > We can trigger the `deploy_backend.sh` script by clicking on `CI/CD -> Pipelines` in the left nav, click on the `>>` button, and click the _Play_ button next to `deploy-dependencies`. If we click the same bubble again, we can watch the job run in real time by clicking on `deploy-dependencies`. Navigating / Using the CI/CD functionality can be a bit clunky at first pass, but once you've clicked around a few things it should become familiar enough.
 
-![Deploy Dependencies](lab-04/images/img01.png)
+![Deploy Dependencies](/lab-04/images/img01.png)
 
 ### 1.2 Deploy Microservice Applications
 
@@ -41,19 +42,19 @@ Deploy App / Infrastructure Services
 > 
 > Similar to how we deployed the Dependencies, we're going to Deploy the application this time. Click the last bubble in the stages column, and then click the _Play_ button next to `deploy-services`. You can watch this job run in real time by clicking on `deploy-services` after you've clicked `Play`. This job will take a few minutes to run, but once it's done move onto the next step!
 
-![Deploy Services](lab-04/images/img02.png)
+![Deploy Services](/lab-04/images/img02.png)
 
 ### 1.3 Test Drive the Pet Clinic
 
 > We can now see our deployment in GKE, so switch back to the Google Console and start investigating your application. From here, you can inspect your application services, metrics, and logs. You can even load your application in your browser and begin interacting with it! *NOTE* Be sure to replace `INGRESS_IP` with the Ingress IP address you saved from `gitlab-creds` earlier.
 
-* Visit http://admin.spc.INGRESS_IP.nip.io for the Spring Boot Admin control panel.
+* Visit http://admin.INGRESS_IP.nip.io for the Spring Boot Admin control panel.
 * Visit http://spc.INGRESS_IP.nip.io for the application itself!
 
-![GKE Has Services](lab-04/images/img03a.png)
-![Spring Boot Admin](lab-04/images/img03b.png)
-![Spring Boot Admin 2](lab-04/images/img03d.png)
-![Spring Pet Clinic](lab-04/images/img03c.png)
+![GKE Has Services](/lab-04/images/img03a.png)
+![Spring Boot Admin](/lab-04/images/img03b.png)
+![Spring Boot Admin 2](/lab-04/images/img03d.png)
+![Spring Pet Clinic](/lab-04/images/img03c.png)
 
 > Feel free to spend some time here and please ask questions! We just completed roughly two weeks worth of integration work in less than an hour, there is a lot to ingest here. Once you've soaked in the awesomeness, let's check out what it's going to take to add monitoring and tracing to our application.
 
@@ -77,12 +78,11 @@ Merge / Deploy Observable Application
 * Click `Create merge request`
 * Leave all settings at their default, scroll and click `Submit merge request`
 
-![Create Merge Request](lab-04/images/img04.png)
-![Submit Merge Request](lab-04/images/img04a.png)
+![Create Merge Request](/lab-04/images/img04.png)
+![Submit Merge Request](/lab-04/images/img04a.png)
+![Ship It](/lab-04/images/img06.png)
 
 > Merge the observability changes! We will be reviewing the code as these changes are being built and pushed to the docker repository. Click `Merge`
-
-![Ship It](lab-04/images/img06.png)
 
 ### 2.3 Code Review
 
@@ -93,7 +93,7 @@ Merge / Deploy Observable Application
 * a. [Helm Repository - MySQL](https://github.com/helm/charts/tree/master/stable/mysql) - We're configuring MySQL to run a [sidecar pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) that will collect metrics from MySQL and export them via a prometheus endpoint.
 * b. This is the magic sauce in the [prometheus operator](https://github.com/coreos/prometheus-operator). This annotation tells prometheus that it should collect metrics from this service.
 
-![MySQL Helm Review](lab-04/images/img05a.png)
+![MySQL Helm Review](/lab-04/images/img05a.png)
 
 > The next change we'll be reviewing is to the `helm/spring-petclinic-kubernetes/templates/deployment.yaml` manifest. This manifest is used across all the spring petclinic microservices, which is the real power behind helm since it can be used to reduce config duplication.
 > 
@@ -106,7 +106,7 @@ Merge / Deploy Observable Application
 * `JAEGER_REPORTER_LOG_SPANS == false` - Logs that are emitted during an instrumented span will be logged within the trace. This is great for troubleshooting but adds a lot of overhead.
 * `JAEGER_SERVICE_NAME == {{ .Release.Name }}` - Populates the service name value from the Helm service template
 
-![Spring Petclinic Helm Chart Review](lab-04/images/img05b.png)
+![Spring Petclinic Helm Chart Review](/lab-04/images/img05b.png)
 
 > If you're not familiar with Java and Maven projects, `pom.xml` is a manifest file for the project, it includes dependencies, libraries, and other configuration details that are required to compile our micro service applications. In the following change, we've added multiple dependencies which are required to export metrics and tracing data. Let's break down each dependency:
 
@@ -115,19 +115,19 @@ Merge / Deploy Observable Application
 * c. [Jaeger Tracing Client](https://github.com/jaegertracing/jaeger-client-java) - Responsible for shipping trace spans and logs to the Jaeger service
 * d. [Spring Cloud Opentracing](https://github.com/opentracing-contrib/java-spring-cloud) - Automatically wraps specific technologies within Spring Boot such as RestTemplate, JDBC, JMS, etc. This is required to capture timing details and meta data around transactions between other services and data systems such as MySQL, Oracle, RabbitMQ. There are dozens of technologies supported within this library - as long as you're using standard approaches to handling requests and data you shouldn't have to worry about manual instrumentation to gather trace context.
 
-![Spring Petclinic Dependencies](lab-04/images/img05c.png)
+![Spring Petclinic Dependencies](/lab-04/images/img05c.png)
 
 > Once our project has the necessary dependencies we must configure the application to expose those metrics for collection. In this next image we're adding the necessary configuration for Micrometer and Prometheus. This is required for each application we want metrics exposed.
 
-![Metric Configuration](lab-04/images/img05d.png)
+![Metric Configuration](/lab-04/images/img05d.png)
 
 > We must also bootstrap Opentracing within each application that we want to trace:
 
-![Opentracing Configuration](lab-04/images/img05e.png)
+![Opentracing Configuration](/lab-04/images/img05e.png)
 
 > Finally, if we want to collect custom business metrics, we must implement the logic to emit those metrics when requests are made within the application.
 
-![Custom Metrics](lab-04/images/img05f.png)
+![Custom Metrics](/lab-04/images/img05f.png)
 
 > Now that we've reviewed our code, it's time to merge!
 
@@ -135,7 +135,7 @@ Merge / Deploy Observable Application
 
 > In order to apply the changes we've made to both the database and the services, we must run both deployment tasks. Once the `Build` and `Push` tasks have passed, run both the Deploy tasks.
 
-![Deploy It](lab-04/images/img07.png)
+![Deploy It](/lab-04/images/img07.png)
 
 > In the [next lab](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-05#welcome-to-lab-05-monitor-it) we'll be deploying the necessary infrastructure to collect, manage, and visualize the telemetry and contextual data our applications are now emitting.
 
