@@ -7,7 +7,7 @@ _Note: These steps may vary slightly based on your region / locality. If you've 
 
 ## Tasks:
 
-- [ ] 1 :: [Create Google Cloud Account](https://gitlab.com/opentracing-workshop/lab-notes/blob/8b7d653b9051122bf8f87376231144ddc5d608b8/lab-01/README.md#create-google-cloud-account)
+- [ ] 1 :: [Create Google Cloud Account](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-01#create-google-cloud-account)
   - [ ] 1.1 :: [Create Account](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-01#11-create-account)
   - [ ] 1.2 :: [Fill in Details](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-01#12-fill-in-details)
   - [ ] 1.3 :: [Fill in More Details](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-01#13-fill-in-more-details)

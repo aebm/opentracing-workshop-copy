@@ -47,7 +47,7 @@ Distributed Tracing provides visibility into large, complex microservice environ
 
 ![Deep Call Analysis](/lab-06/images/img01c.png)
 
-### 2.1 Async Processing / Analysis
+### 1.4 Async Processing / Analysis
 
 Initially, the Spring Pet Clinic microservices application didn't have a notifications service. We'll briefly cover the motivation behind introducing this new business requirement, the architecture of this new functionality, and a common occurence most software development teams will encounter when they've dedicated the time and effort it requires to implement distributed tracing in their environments.
 
@@ -106,11 +106,10 @@ Now, just as is the case with real world IT and business constraints, the applic
 
 ![Instana to the Rescue](/lab-06/images/img02c.png)
 
-
-### 3.1 Single Music Overview
-
 Advanced Use Cases (with Distributed Tracing analytics)
 ---
+
+### 3.1 Single Music Overview
 
 Now that we've covered some basics, we'll dive into some advanced use cases supplied through the Instana APM tool. The reason I'm using this tool for examples:
   
@@ -118,10 +117,7 @@ Now that we've covered some basics, we'll dive into some advanced use cases supp
 * Current Open Source technologies do not offer the deep analytic capabilities I'm about to discuss; which include aggregations, machine learning, and graph dependency mapping for contributing factor analysis.
 * Our team is really small, we don't have the time or budget to maintain our own monitoring solution. 
 
-Vendor Solution Overview
----
-
-Vendor Solutions that offer Distributed Tracing solutions (and more)
+### 3.2 Vendor Solution Overview
 
 There are several vendors today which can provide similar functionality, and what it boils down to is your budget, technology requirements, and enterprise-ready requirements (on-premise, multi-tenant, saml, etc). I'll mention what I consider industry leaders in this space. If you're considering utilizing this technology in your stack you should be prepared to do several proof of concepts and quite a bit of research.
 

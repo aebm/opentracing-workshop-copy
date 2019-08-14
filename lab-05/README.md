@@ -22,27 +22,27 @@ Setup Monitoring Systems
 
 ### 1.1 Discuss Requirements
 
-> In this task we will deploy and configure the following technologies:
-> 
-> * [Prometheus](https://prometheus.io/)
-> * [Grafana](https://grafana.com/)
-> * [Jaeger](https://www.jaegertracing.io/)
->
-> The benefit to using the aforementioned tools is historical analytics, but it comes at the price of operational complexity. You must ensure your applications are configured and built for observability, and you must budget for the operation of the above systems - which have significant CPU/Memory/Disk requirements. We'll cover alternatives after this lab, and the benefits of using a managed solution can have when running systems that aren't proof of concept/demo environments.
+In this task we will deploy and configure the following technologies:
+ 
+* [Prometheus](https://prometheus.io/)
+* [Grafana](https://grafana.com/)
+* [Jaeger](https://www.jaegertracing.io/)
+
+The benefit to using the aforementioned tools is historical analytics, but it comes at the price of operational complexity. You must ensure your applications are configured and built for observability, and you must budget for the operation of the above systems - which have significant CPU/Memory/Disk requirements. We'll cover alternatives after this lab, and the benefits of using a managed solution can have when running systems that aren't proof of concept/demo environments.
 
 ### 1.2 Spring Boot Admin Refresh
 
-> Before we get started, let's open up `Spring Boot Admin` again or refresh the page, and click on one of the application services. You'll immediatly notice a tremendous amount of more data (see screen shot below). The configuration changes we've made and libraries we introduced to our application has also enabled data to be collected automatically by `Spring Boot Admin`. There is no historical or analytic capabilities in this application, so it's only useful for "real-time" monitoring at best.
+Before we get started, let's open up `Spring Boot Admin` again or refresh the page, and click on one of the application services. You'll immediatly notice a tremendous amount of more data (see screen shot below). The configuration changes we've made and libraries we introduced to our application has also enabled data to be collected automatically by `Spring Boot Admin`. There is no historical or analytic capabilities in this application, so it's only useful for "real-time" monitoring at best.
 
 ![Spring Boot Admin Refresh](/lab-05/images/img00a.png)
 
 ### 1.3 Deploy Monitoring Infrastructure
 
-> In this step we'll go back to the Google Console and run the `setup-monitoring` command (similar to the `setup-cluster` step in [Lab 2.1](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-02#21-setup-cluster)). Open the console terminal and run this command in the terminal: 
-> 
+In this step we'll go back to the Google Console and run the `setup-monitoring` command (similar to the `setup-cluster` step in [Lab 2.1](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-02#21-setup-cluster)). Open the console terminal and run this command in the terminal: 
+ 
 > `docker run --rm -it -v "$HOME/build/kubeconfig:/root/.kube/config" registry.gitlab.com/opentracing-workshop/build-tools setup-monitoring`
->
-> At the conclusion of this command you'll see a list of URLs which should begin working within a minute or two. While you're waiting you can [view the script](https://gitlab.com/opentracing-workshop/build-tools/blob/master/bin/setup-monitoring) which installed these services. It's a fairly straight-forward setup, the complexity is baked into the helm charts - which we could spend two hours on talking about alone.
+
+At the conclusion of this command you'll see a list of URLs which should begin working within a minute or two. While you're waiting you can [view the script](https://gitlab.com/opentracing-workshop/build-tools/blob/master/bin/setup-monitoring) which installed these services. It's a fairly straight-forward setup, the complexity is baked into the helm charts - which we could spend two hours on talking about alone.
 
 ![Ingress URLs](/lab-05/images/img01.png)
 
@@ -56,6 +56,7 @@ In this task, we'll be getting familiar with Grafana, logging in, and exploring 
 ![Grafana Login is not UX](/lab-05/images/img02a.png)
 
 > Follow these steps to sign in:
+>
 > * Visit the Grafana URL provided by the installation script -
 https://grafana.spc.INGRESS_IP.nip.io
 > * Login to the service with the username and password: `admin:admin`
