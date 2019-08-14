@@ -9,10 +9,10 @@ Tasks:
   - [ ] 1.1 :: [Finding Traces](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#11-finding-traces)
   - [ ] 1.2 :: [Understanding Traces](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#12-understanding-traces)
   - [ ] 1.3 :: [Analyzing Calls](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#13-analyzing-calls)
+  - [ ] 1.4 :: [Async Processing Analysis](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#14-async-processing-analysis)
 - [ ] 2 :: [Advanced Use Cases](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#advanced-use-cases-with-distributed-tracing-analytics)
   - [ ] 2.1 :: [Single Music Overview](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#21-single-music-overview)
-  - [ ] 2.2 :: [Screenshotpalooza](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#22-screenshotapoolza)
-- [ ] 3 :: [Vendor Solution Overview](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#vendor-solution-overview)
+  - [ ] 2.2 :: [Vendor Solution Overview](https://gitlab.com/opentracing-workshop/lab-notes/tree/master/lab-06#22-vendor-solution-overview)
 
 Explore Jaeger
 ---
@@ -109,7 +109,7 @@ Now, just as is the case with real world IT and business constraints, the applic
 Advanced Use Cases (with Distributed Tracing analytics)
 ---
 
-### 3.1 Single Music Overview
+### 2.1 Single Music Overview
 
 Now that we've covered some basics, we'll dive into some advanced use cases supplied through the Instana APM tool. The reason I'm using this tool for examples:
   
@@ -117,7 +117,7 @@ Now that we've covered some basics, we'll dive into some advanced use cases supp
 * Current Open Source technologies do not offer the deep analytic capabilities I'm about to discuss; which include aggregations, machine learning, and graph dependency mapping for contributing factor analysis.
 * Our team is really small, we don't have the time or budget to maintain our own monitoring solution. 
 
-### 3.2 Vendor Solution Overview
+### 2.2 Vendor Solution Overview
 
 There are several vendors today which can provide similar functionality, and what it boils down to is your budget, technology requirements, and enterprise-ready requirements (on-premise, multi-tenant, saml, etc). I'll mention what I consider industry leaders in this space. If you're considering utilizing this technology in your stack you should be prepared to do several proof of concepts and quite a bit of research.
 
