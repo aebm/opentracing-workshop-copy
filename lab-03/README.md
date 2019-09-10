@@ -32,7 +32,7 @@ Setup Application Repository
 
 > Fill out the following values:
 >
-> * Git Repository URL: `https://gitlab.com/opentracing-workshop/spring-petclinic-kubernetes`
+> * Git Repository URL: `https://github.com/notsureifkevin/spring-petclinic-kubernetes.git`
 > * Project Name: `spring-petclinic-kubernetes`
 > * Set the Project to `Public`
 > * Click `Create Project`
