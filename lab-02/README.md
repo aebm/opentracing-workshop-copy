@@ -27,10 +27,10 @@ Setup Kubernetes Cluster
 
 > This will take a few minutes, once the API is ready, we can click the `Create Cluster` button, leave all values default except the following and fill with these values:
 > 
-> * Number of Nodes: 4
-> * Machine type: 2 vCPUs (7.5GB Memory)
+> * Number of nodes: 4
+> * Machine type: n1-standard-2 (2 vCPU, 7.5GB memory)
 
-![Create Cluster](/lab-02/images/img02.png)
+![Create Cluster](/lab-02/images/img02-v2.png)
 
 ### 1.3 Connect to Cloud Shell 
 
