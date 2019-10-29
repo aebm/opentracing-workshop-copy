@@ -84,6 +84,7 @@ Opentracing provides an additional capability, which is exporting the timing and
 > 
 > * Click `Repository` on the left-nav, then click `Compare`
 > * Change `Source` to `add-oss-monitoring`
+> * Click `Compare` if `Create merge request` is not available
 > * Click `Create merge request`
 > * Leave all settings at their default, scroll and click `Submit merge request`
 
@@ -96,6 +97,8 @@ Merge the observability changes! We will be reviewing the code as these changes 
 ### 2.3 Code Review
 
 Click on the `Changes (n)` tab to reveal the modifications we're making to our microservice application. There are a number of duplicated changes we won't be covering, but we will go into detail on each unique change and explain what we're doing to enable our applications for observability.
+
+![Ch-ch-changes](/lab-04/images/img05g.png)
 
 The first change you should see is to the `helm/spring-petclinic-database-server/values.yaml` file. This file contains the configuration for the `mysql` helm chart deployment. Let's examine the changes.
 
