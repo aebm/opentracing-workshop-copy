@@ -93,13 +93,28 @@ Configure CI/CD
 
 ### 2.3 Run Pipeline Validation
 
+> The following next steps will validate your pipeline is configured correctly and execute your initial builds
+>
 > * Click `CI/CD` in the left-nav menu, then click on `Run Pipeline`
+> * Click `Run Pipeline` for the `master` branch/tag
 > * Once the pipelines has begun executing, click the `Play` button next to `validate-k8s`
 > * To see this job run in real-time, click the `validate-k8s` button
+>
+> The images below will detail each step:
+
+> * Click `CI/CD` in the left-nav menu, then click on `Run Pipeline`
 
 ![Run Pipeline](/lab-03/images/img07a.png)
 
+> * Click `Run Pipeline` for the `master` branch/tag
+
+![Run Pipeline For Real This Time](/lab-03/images/img07a1.png)
+
+> * Once the pipelines has begun executing, click the `Play` button next to `validate-k8s`
+
 ![Run Validate Job](/lab-03/images/img07b.png)
+
+> * To see this job run in real-time, click the `validate-k8s` button
 
 ![See Validate Job Run](/lab-03/images/img07c.png)
 
