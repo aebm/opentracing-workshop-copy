@@ -98,7 +98,7 @@ Above is the POST request initiated by submitting a new visit. All we see here i
 
 ![Notification Service Request](/lab-06/images/img02b.png)
 
-As we can see above, the notification service made the Rest API requests to the other services, however, the originator of those request (the kafka topic being consumed) is not visualized. This disconnect may seem minor, but when operating at scale these interactions are measured and analyzed for latency, throughput and error rate. This is assuming the SRE team is using distributed tracing for measuring SLI/SLOs and system health - which they should since that's a major benefit of observability.
+As we can see above, the notification service made the Rest API requests to the other services, however, the originator of those request (the kafka topic being consumed) is not visualized. This disconnect may seem minor, but when operating at scale these interactions are measured and analyzed for latency, throughput and error rate. This is assuming the SRE team is using distributed tracing for [measuring SLI/SLOs](https://cloud.google.com/blog/products/gcp/sre-fundamentals-slis-slas-and-slos) and system health - which they should since that's a major benefit of observability.
 
 Now, how do we solve this problem? Well, that's complicated, because [instrumenting Kafka with Open Tracing](https://github.com/opentracing-contrib/java-kafka-client) requires significant code level changes beyond just introducing a library.
 
