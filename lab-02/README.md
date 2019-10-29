@@ -59,7 +59,7 @@ Configure Kubernetes Cluster
 >
 > When finished executing, we should see a screen like this:
 
-![Cluster Setup Success](/lab-02/images/img07.png)
+![Cluster Setup Success](/lab-02/images/img07-v2.png)
 
 ### 2.2 Export Gitlab Credentials
 
