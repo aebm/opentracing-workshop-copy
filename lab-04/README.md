@@ -106,7 +106,7 @@ The first change you should see is to the `helm/spring-petclinic-database-server
 
 The next change we'll be reviewing is to the `helm/spring-petclinic-kubernetes/templates/deployment.yaml` manifest. This manifest is used across all the spring petclinic microservices, which is the real power behind helm since it can be used to reduce config duplication.
 
-You can see below that we're adding multiple environment values to the template, which will be applied to each service so long `jaeger.enabled == true` in the corresponding service `values.yaml` file (we'll see that later in the review). Now, within the last month or two the Jaeger Tracing operator has matured quite a bit and it's worth looking at that pattern (similiar to prometheus) for deployment. Within the next month or two this workshop will be updated to utilize that technology. For now, let's break each of these variables:
+You can see below that we're adding multiple environment values to the template, which will be applied to each service so long `jaeger.enabled == true` in the corresponding service `values.yaml` file (we'll see that later in the review). With the Jaeger Operator this configuration would be handled by the operator itself. For now, let's break each of these variables:
 
 * `SPRING_PROFILES_ACTIVE == jaegertracing` - This setting enables our bootstrap method in our services, and indicates we're using the jaeger client to export trace spans and logs
 * `JAEGER_ENDPOINT == jaegerUrl` - This is the internal endpoint which is used by the jaeger client within our services to send data
