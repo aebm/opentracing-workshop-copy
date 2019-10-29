@@ -44,7 +44,7 @@ Setup Kubernetes Cluster
 
 ### 1.4 Generate External kubeconfig
 
-> We are performing this step because the docker container we'll be using to configure the cluster is not compatible with the authentication provider which comes prebaked into Cloud Shell. In order to access the Kubernetes API we generate a valid kubeconfig file which can be volume mounted into the docker container which will configure our cluster for deployment using Gitlab.
+> We are performing this step because the docker container we'll be using to configure the cluster is not compatible with the authentication provider which comes pre-installed on Google Cloud Shell. In order to access the Kubernetes API the next script will generate a set of credentials which can be used within a docker container. The container will be used to connect to our cluster and configure roles and namespaces for use by the microservice application and monitoring tools.
 
 > Once inside the cloud shell, we must execute this shell script to generate the kubeconfig file, run: `curl -Ls https://git.io/fj9JB | bash -s` in the terminal window. Once the command has executed we can inspect the new kubeconfig file by executing `cat ~/build/kubeconfig`
 
