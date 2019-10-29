@@ -34,6 +34,8 @@ The benefit to using the aforementioned tools is historical analytics, but it co
 
 Before we get started, let's open up `Spring Boot Admin` again or refresh the page, and click on one of the application services. You'll immediatly notice a tremendous amount of more data (see screen shot below). The configuration changes we've made and libraries we introduced to our application has also enabled data to be collected automatically by `Spring Boot Admin`. There is no historical or analytic capabilities in this application, so it's only useful for "real-time" monitoring at best.
 
+> The admin page is located at http://admin.INGRESS_IP.nip.io/#/wallboard
+
 ![Spring Boot Admin Refresh](/lab-05/images/img00a.png)
 
 ### 1.3 Deploy Monitoring Infrastructure
@@ -53,13 +55,13 @@ Using Grafana
 
 In this task, we'll be getting familiar with Grafana, logging in, and exploring some of the pre-installed dashboards.
 
-![Grafana Login is not UX](/lab-05/images/img02a.png)
-
 > Follow these steps to sign in:
 >
 > * Visit the Grafana URL provided by the installation script -
 https://grafana.spc.INGRESS_IP.nip.io
 > * Login to the service with the username and password: `admin:admin`
+
+![Grafana Login is not UX](/lab-05/images/img02a.png)
 
 Once logged in, feel free to explore a few of the pre-installed dashboards, these were installed via the Prometheus operator.
 
@@ -103,7 +105,7 @@ We can band-aid this within Prometheus, although the fix is far from optimal (mo
 ![Add Pod Names 2](/lab-05/images/img04c.png)
 
 > * _Yellow_ :: Move the `$pod` variable under `$instance`
-> * _Red_ :: Click `Save` on the left settings panel
+> * _Red_ :: Click `Save` on the left settings panel (confirm the popup with a description)
 > * _Teal_ :: Click `Back` button on the upper right corner of the dashboard
 
 ![Add Pod Names 3](/lab-05/images/img04d.png)
@@ -143,6 +145,8 @@ The dashboard JSON manifest [is located here](https://gist.githubusercontent.com
 ![Import Petclinic Dashboard](/lab-05/images/img06a.png)
 
 We should now see a mostly empty dashboard! This is because we haven't taken many actions within our demo application. Head over to the Spring Petclinic app, create some owners and pets, update, create visits, etc. We'll begin to see the values in this dashboard reflect those actions (this is also preparing us for the next application, Jaeger).
+
+> The Spring Pet Clinic app can be loaded with your ingress ip: http://spc.INGRESS_IP.nip.io
 
 ![Custom Petclinic Dashboard](/lab-05/images/img06b.png)
 
