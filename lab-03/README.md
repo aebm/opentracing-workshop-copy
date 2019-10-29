@@ -37,7 +37,7 @@ Setup Application Repository
 > * Set the Project to `Public`
 > * Click `Create Project`
 
-![Create Project](/lab-03/images/img04.png)
+![Create Project](/lab-03/images/img04-v2.png)
 
 Configure CI/CD
 ---
@@ -55,9 +55,9 @@ Configure CI/CD
 > * Click `Settings`
 > * Click `CI/CD`
 
-![CI/CD Settings](/lab-03/images/img05b.png)
+![CI/CD Settings](/lab-03/images/img05b-v2.png)
 
-> * Click `Expand` next to `Environment Variables`
+> * Click `Expand` next to `Variables`
 > * Fill in `INGRESS_IP` and the value you've collected from either `gitlab-creds` or from the Service Ingress IP in the Google Console.
 > * Click `Save variables`
 
@@ -74,20 +74,22 @@ Configure CI/CD
 
 ![Add Kubernetes](/lab-03/images/img06b.png)
 
-> Fill in the following values, taking data from `gitlab-creds` which was created earlier in Lab 02:
+> Before filling in these values, be sure to click the `Add existing cluster` tab
+>
+> The values for these fields can be found in `gitlab-creds` which was created earlier in Lab 02:
 > 
 > * Kubernetes Cluster Name: `my-cluster`
 > * Environment Scope: `*`
 > * API URL: `<Copy URL from gitlab-creds>`
 > * CA Certificate: `<Copy CA CERT from gitlab-creds>`
 > * Token: `<Copy Token from bottom of gitlab-creds>`
-> * Gitlab-Managed cluster: `UNCHECK`
 > * RBAC-enabled cluster: `checked`
+> * Gitlab-Managed cluster: `UNCHECK`
 > * Project Namespace: `spc`
 > 
 > Once you've populated these values, click `Add Kubernetes Cluster`, you'll validate these entries in the next step during > our first build.
 
-![For real - Add Kubernetes](/lab-03/images/img06c.png)
+![For real - Add Kubernetes](/lab-03/images/img06c-v2.png)
 
 ### 2.3 Run Pipeline Validation
 
